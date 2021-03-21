@@ -13,6 +13,7 @@ class ListAllUsersController {
 
       return response.status(200).json(users)
     } catch (err) {
+      if (err.message == 'User is not an admin') response.status(403).json({ error: err.message })
       return response.status(400).json({ error: err.message })
     }
   }
