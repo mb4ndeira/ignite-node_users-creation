@@ -75,20 +75,55 @@
                         "description": "User is not an admin"
                     }
                 }
-            },
+            }
+        },
+        "/users/{user.id}": {
+            "get": {
+                "tag": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "IdParamHeader": {
+                            "name": "user_id",
+                            "in": "routes",
+                            "description": "User Id",
+                            "required": true,
+                            "schema": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    }
+                ],
+                "summary": "Get informations of user",
+                "description": "Get informations of user specified in routes",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "User does not exist"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
             "patch": {
                 "tag": [
                     "Users"
                 ],
                 "parameters": [
                     {
-                        "name": "user_id",
-                        "description": "User Id",
-                        "in": "route",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
+                        "IdParamHeader": {
+                            "name": "user_id",
+                            "in": "routes",
+                            "description": "User Id",
+                            "required": true,
+                            "schema": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
                         }
                     }
                 ],
